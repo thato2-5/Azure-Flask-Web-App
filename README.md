@@ -145,8 +145,8 @@ gantt
     title Development Timeline
     dateFormat  YYYY-MM-DD
     section Core Features
-    Database Design      :done, db1, 2024-01-01, 7d
-    API Development      :active, api1, 2024-01-08, 14d
+    Database Design      :done, db1, 2025-04-01, 7d
+    API Development      :active, api1, 2024-05-08, 14d
     section UI
     Dashboard Design     : ui1, after db1, 5d
     Frontend Implementation : ui2, after api1, 10d
