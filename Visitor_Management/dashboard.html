@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FHS Visitor Management Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.css" rel="stylesheet">
+    <style>
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            font-weight: bold;
+            background-color: #f8f9fa;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .stat-label {
+            color: #6c757d;
+        }
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid mt-4">
+        <h1 class="mb-4 text-primary text-center">FHS Visitor Management Dashboard</h1>
+        
+        <!-- Summary Stats Row -->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="stat-value" id="totalVisitors">0</div>
+                    <div class="stat-label">Total Visitors</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="stat-value" id="visitorsToday">0</div>
+                    <div class="stat-label">Visitors Today</div>
+                </div>
+            </div>
+	    
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="stat-value" id="currentVisitors">0</div>
+                    <div class="stat-label">Currently Signed In</div>
+                </div>
+            </div>
+	    
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="stat-value" id="uniqueVisitors">0</div>
+                    <div class="stat-label">Unique Visitors</div>
+                </div>
+            </div>
+        </div>
+        
+         <!-- Filter Controls -->
+        <div class="card mb-4">
+            <div class="card-header">Filter Visitors</div>
+            <div class="card-body">
+                <form id="filterForm" class="row g-3">
+                    <div class="col-md-3">
+                        <label for="startDate" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="startDate">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="endDate" class="form-label">End Date</label>
+                        <input type="date" class="form-control" id="endDate">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="purposeFilter" class="form-label">Purpose</label>
+                        <select class="form-select" id="purposeFilter">
+                            <option value="">All Purposes</option>
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="button" class="btn btn-primary me-2" onclick="applyFilters()">Apply Filters</button>
+                        <button type="button" class="btn btn-success" onclick="exportData()">Export Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="row mt-4">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        Visitor Trend (Last 30 Days)
+                    </div>
+                    <div class="card-body">
+                        <canvas id="visitsChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Visit Purpose Breakdown
+                    </div>
+                    <div class="card-body">
+                        <canvas id="purposeChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Data Tables Row -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Frequent Visitors (Top 10)
+                    </div>
+                    <div class="card-body table-container">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Visits</th>
+                                </tr>
+                            </thead>
+                            <tbody id="frequentVisitors">
+                                <!-- Will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        New Visitors (First-time)
+                    </div>
+                    <div class="card-body table-container">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Company</th>
+                                    <th>Contact</th>
+                                    <th>First Visit</th>
+                                </tr>
+                            </thead>
+                            <tbody id="newVisitors">
+                                <!-- Will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script>
+        // Global chart references
+        let visitsChart, purposeChart;
+        
+        // Add this to your DOMContentLoaded event listener:
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFilters();
+            fetchDashboardData();
+            setInterval(fetchDashboardData, 300000);
+        });
+
+        function fetchDashboardData() {
+            // Fetch metrics
+            fetch('/api/visitors/metrics')
+                .then(response => response.json())
+                .then(data => {
+                    updateSummaryStats(data);
+                    renderCharts(data);
+                    updateFrequentVisitors(data.visit_frequency);
+                });
+            
+            // Fetch new visitors
+            fetch('/api/visitors/new')
+                .then(response => response.json())
+                .then(data => {
+                    updateNewVisitors(data);
+                });
+        }
+        
+        function updateSummaryStats(data) {
+            document.getElementById('totalVisitors').textContent = data.total_visitors;
+            document.getElementById('visitorsToday').textContent = data.visitors_today;
+            document.getElementById('currentVisitors').textContent = data.current_visitors;
+            document.getElementById('uniqueVisitors').textContent = data.unique_visitors;
+        }
+        
+        function renderCharts(data) {
+            // Destroy existing charts if they exist
+            if (visitsChart) visitsChart.destroy();
+            if (purposeChart) purposeChart.destroy();
+            
+            // Visits Trend Chart
+            const visitsCtx = document.getElementById('visitsChart').getContext('2d');
+            visitsChart = new Chart(visitsCtx, {
+                type: 'line',
+                data: {
+                    labels: data.daily_visits.map(d => d.date),
+                    datasets: [{
+                        label: 'Visitors per Day',
+                        data: data.daily_visits.map(d => d.count),
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Visitors'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Purpose Breakdown Chart
+            const purposeCtx = document.getElementById('purposeChart').getContext('2d');
+            purposeChart = new Chart(purposeCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: data.purpose_breakdown.map(p => p.purpose),
+                    datasets: [{
+                        data: data.purpose_breakdown.map(p => p.count),
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+        }
+        
+        function updateFrequentVisitors(visitors) {
+            const tbody = document.getElementById('frequentVisitors');
+            tbody.innerHTML = '';
+            
+            visitors.forEach(visitor => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${visitor.name || 'N/A'}</td>
+                    <td>${visitor.email || 'N/A'}</td>
+                    <td>${visitor.visit_count}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        function updateNewVisitors(visitors) {
+            const tbody = document.getElementById('newVisitors');
+            tbody.innerHTML = '';
+            
+            visitors.forEach(visitor => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${visitor.name || 'N/A'}</td>
+                    <td>${visitor.company || 'N/A'}</td>
+                    <td>
+                        ${visitor.email ? visitor.email + '<br>' : ''}
+                        ${visitor.phone || ''}
+                    </td>
+                    <td>${visitor.first_visit ? new Date(visitor.first_visit).toLocaleString() : 'N/A'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Global variables to store current filters
+        let currentFilters = {
+            startDate: null,
+            endDate: null,
+            purpose: null
+        };
+
+        // Initialize filters when page loads
+        function initializeFilters() {
+            // Set default dates (last 30 days)
+            const endDate = new Date();
+            const startDate = new Date();
+            startDate.setDate(startDate.getDate() - 30);
+            
+            document.getElementById('startDate').valueAsDate = startDate;
+            document.getElementById('endDate').valueAsDate = endDate;
+            
+            currentFilters.startDate = startDate.toISOString().split('T')[0];
+            currentFilters.endDate = endDate.toISOString().split('T')[0];
+            
+            // Fetch purposes for filter dropdown
+            fetch('/api/visitors/purposes')
+                .then(response => response.json())
+                .then(purposes => {
+                    const select = document.getElementById('purposeFilter');
+                    purposes.forEach(purpose => {
+                        const option = document.createElement('option');
+                        option.value = purpose;
+                        option.textContent = purpose;
+                        select.appendChild(option);
+                    });
+                });
+        }
+
+        // Apply filters to all data
+        function applyFilters() {
+            currentFilters = {
+                startDate: document.getElementById('startDate').value,
+                endDate: document.getElementById('endDate').value,
+                purpose: document.getElementById('purposeFilter').value
+            };
+            
+            // Refresh all data with filters applied
+            fetchDashboardData();
+        }
+
+        // Export data with current filters
+        function exportData() {
+            let url = '/api/visitors/export?';
+            const params = [];
+            
+            if (currentFilters.startDate) {
+                params.push(`start_date=${encodeURIComponent(currentFilters.startDate)}`);
+            }
+            if (currentFilters.endDate) {
+                params.push(`end_date=${encodeURIComponent(currentFilters.endDate)}`);
+            }
+            if (currentFilters.purpose) {
+                params.push(`purpose=${encodeURIComponent(currentFilters.purpose)}`);
+            }
+            
+            window.location.href = url + params.join('&');
+        }
+
+        // Update your fetchDashboardData function to use filters
+        function fetchDashboardData() {
+            let metricsUrl = '/api/visitors/metrics?';
+            const params = [];
+            
+            if (currentFilters.startDate) {
+                params.push(`start_date=${encodeURIComponent(currentFilters.startDate)}`);
+            }
+            if (currentFilters.endDate) {
+                params.push(`end_date=${encodeURIComponent(currentFilters.endDate)}`);
+            }
+            if (currentFilters.purpose) {
+                params.push(`purpose=${encodeURIComponent(currentFilters.purpose)}`);
+            }
+            
+            // Fetch metrics with filters
+            fetch(metricsUrl + params.join('&'))
+                .then(response => response.json())
+                .then(data => {
+                    updateSummaryStats(data);
+                    renderCharts(data);
+                    updateFrequentVisitors(data.visit_frequency);
+                });
+            
+            // Fetch new visitors with filters
+            let newVisitorsUrl = '/api/visitors/new?';
+            fetch(newVisitorsUrl + params.join('&'))
+                .then(response => response.json())
+                .then(data => {
+                    updateNewVisitors(data);
+                });
+        }
+
+    </script>
+</body>
+</html>
