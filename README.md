@@ -204,9 +204,29 @@ stateDiagram-v2
     Archived --> [*]
 ```
 
-# Screenshots
+# Screenshot
 ![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/visitors/Visitor_Management/dashboard01.png)
 
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/visitors/Visitor_Management/dashboard02.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/visitors/Visitor_Management/dashboard03.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/visitors/Visitor_Management/dashboard04.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/visitors/Visitor_Management/dashboard05.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/visitors/Visitor_Management/dashboard06.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/visitors/Visitor_Management/dashboard07.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/visitors/Visitor_Management/dashboard08.png)
 
 Getting Started
 Prerequisites
