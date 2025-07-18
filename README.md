@@ -123,6 +123,87 @@ classDiagram
     VisitorManagementApp --> Visitor: Manages
 ```
 
+# User Journey Diagram
+``` mermaid
+ journey
+    title Visitor Check-In Process
+    section Arrival
+      Receptionist: 5: Open Check-In Form
+      Visitor: 3: Provide Details
+    section Processing
+      System: 4: Validate Inputs
+      System: 4: Save Record
+    section Completion
+      Receptionist: 2: Capture Signature
+      Visitor: 1: Receive Confirmation
+```
+
+# Deployment Gantt Chart
+
+``` mermaid
+gantt
+    title Development Timeline
+    dateFormat  YYYY-MM-DD
+    section Core Features
+    Database Design      :done, db1, 2024-01-01, 7d
+    API Development      :active, api1, 2024-01-08, 14d
+    section UI
+    Dashboard Design     : ui1, after db1, 5d
+    Frontend Implementation : ui2, after api1, 10d
+    section Testing
+    System Testing       : crit, after ui2, 7d
+```
+
+# Git Branching Strategy
+``` mermaid
+gitGraph
+    commit
+    branch feature/checkin-process
+    checkout feature/checkin-process
+    commit
+    commit
+    checkout main
+    merge feature/checkin-process
+    branch feature/dashboard
+    commit
+    commit
+```
+
+# Mind Map Of Features
+``` mermaid
+mindmap
+  root((Visitor System))
+    Core Features
+      Check-In
+        Form
+        Validation
+        Database
+      Check-Out
+        Update
+        Reports
+    Dashboard
+      Real-Time View
+      Metrics
+      Filtering
+    Administration
+      User Management
+      Settings
+    Integrations
+      Email
+      SMS
+      API
+```
+
+# State Diagram For Visitor Record
+``` mermaid
+stateDiagram-v2
+    [*] --> Pending
+    Pending --> CheckedIn: Form Submitted
+    CheckedIn --> CheckedOut: Signed Out
+    CheckedOut --> Archived: After 30 days
+    Archived --> [*]
+```
+
 Getting Started
 Prerequisites
 
