@@ -38,7 +38,81 @@ This repository contains the source code for the FHS visitor management dashboar
 
    New endpoint to get unique purposes for the filter dropdown
 
-# Documentation:
+# Entity Diagram(Database Schema)
+erDiagram
+    VISITORS {
+        int id PK
+        varchar(100) name
+        varchar(100) company
+        varchar(20) phone
+        varchar(100) email
+        varchar(255) purpose
+        datetime time_in
+        datetime time_out
+        varchar(100) vehicleRegistrationNumber
+        text signature
+        tinyint is_synced
+    }
+
+# System Flowchart
+flowchart TD
+    A[Visitor Arrives] --> B[Check-In Process]
+    B --> C{Input Details}
+    C -->|Form| D[Save to Database]
+    D --> E[Display Confirmation]
+    A --> F[Visitor Departs]
+    F --> G[Check-Out Process]
+    G --> H{Update Record}
+    H --> I[Set Time Out]
+    I --> J[Generate Report]
+
+# API Sequence Diagram
+sequenceDiagram
+    participant Frontend
+    participant Backend
+    participant Database
+    
+    Frontend->>Backend: POST /api/visitors (Check-In)
+    Backend->>Database: INSERT visitor
+    Database-->>Backend: Success
+    Backend-->>Frontend: 201 Created
+    
+    Frontend->>Backend: GET /api/visitors (List)
+    Backend->>Database: SELECT * FROM visitors
+    Database-->>Backend: Data
+    Backend-->>Frontend: 200 OK
+    
+    Frontend->>Backend: PUT /api/visitors/:id (Check-Out)
+    Backend->>Database: UPDATE time_out
+    Database-->>Backend: Success
+    Backend-->>Frontend: 200 OK
+
+# Class Diagram
+classDiagram
+    class Visitor {
+        +id: int
+        +name: str
+        +company: str
+        +phone: str
+        +email: str
+        +purpose: str
+        +time_in: datetime
+        +time_out: datetime
+        +vehicleRegistrationNumber: str
+        +signature: str
+        +is_synced: bool
+        +to_dict(): dict
+    }
+    
+    class VisitorManagementApp {
+        -db: SQLAlchemy
+        +create_visitor()
+        +get_visitors()
+        +sign_out_visitor()
+        +generate_report()
+    }
+    
+    VisitorManagementApp --> Visitor: Manages
 
 Getting Started
 Prerequisites
