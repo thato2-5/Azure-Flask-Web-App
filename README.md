@@ -1,17 +1,44 @@
 # Azure-Flask-Web-App
 
-Repository: Online Survey App
+Repository: FHS Visitor Management Dashboard
 Description
 
-This repository contains the source code for an online survey application built using Python Flask. The app allows users to create, distribute, and analyze surveys easily. It is designed to be scalable and user-friendly, offering a seamless experience for survey creators and respondents alike.
-Features
+This repository contains the source code for the FHS visitor management dashboard built using Python Flask. 
+# Functionality:
 
-  * User Authentication: Secure user registration and login system.
-  * Survey Creation: Intuitive interface for creating and customizing surveys with various question types.
-  * Response Collection: Collect responses in real-time and ensure data integrity.
-  * Data Analysis: Tools for visualizing survey results and exporting data.
-  * Responsive Design: Mobile-friendly design to ensure accessibility across devices.
-  * Email Notifications: Automated notifications for survey responses and important updates.
+   The /api/visitors/export endpoint generates a CSV file with all visitor data
+
+   It respects the same filters as the other endpoints
+
+   The browser will automatically download the file when the endpoint is called
+
+# Filtering Capabilities:
+
+   Date range filtering (start and end dates)
+
+   Purpose filtering
+
+   Signed-in-only filtering
+
+   All filters are applied consistently across all endpoints
+
+# Dashboard Controls:
+
+   Date pickers for selecting date ranges
+
+   Dropdown with all available purposes
+
+   Apply Filters button to refresh data
+
+   Export Data button to download CSV
+
+# Backend Changes:
+
+   All endpoints now support filtering
+
+   New endpoint to get unique purposes for the filter dropdown
+
+# Documentation:
 
 Getting Started
 Prerequisites
