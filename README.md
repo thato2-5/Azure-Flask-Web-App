@@ -39,6 +39,8 @@ This repository contains the source code for the FHS visitor management dashboar
    New endpoint to get unique purposes for the filter dropdown
 
 # Entity Diagram(Database Schema)
+```
+   mermaid
 erDiagram
     VISITORS {
         int id PK
@@ -53,8 +55,11 @@ erDiagram
         text signature
         tinyint is_synced
     }
+```
 
 # System Flowchart
+```
+   mermaid
 flowchart TD
     A[Visitor Arrives] --> B[Check-In Process]
     B --> C{Input Details}
@@ -65,8 +70,11 @@ flowchart TD
     G --> H{Update Record}
     H --> I[Set Time Out]
     I --> J[Generate Report]
+```
 
 # API Sequence Diagram
+```
+   mermaid
 sequenceDiagram
     participant Frontend
     participant Backend
@@ -86,8 +94,11 @@ sequenceDiagram
     Backend->>Database: UPDATE time_out
     Database-->>Backend: Success
     Backend-->>Frontend: 200 OK
+```
 
 # Class Diagram
+```
+   mermaid
 classDiagram
     class Visitor {
         +id: int
@@ -103,7 +114,8 @@ classDiagram
         +is_synced: bool
         +to_dict(): dict
     }
-    
+
+
     class VisitorManagementApp {
         -db: SQLAlchemy
         +create_visitor()
@@ -113,6 +125,7 @@ classDiagram
     }
     
     VisitorManagementApp --> Visitor: Manages
+```
 
 Getting Started
 Prerequisites
