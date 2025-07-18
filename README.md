@@ -205,6 +205,7 @@ stateDiagram-v2
 ```
 
 # Screenshots
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/visitors.png)
 
 
 Getting Started
