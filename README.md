@@ -39,8 +39,7 @@ This repository contains the source code for the FHS visitor management dashboar
    New endpoint to get unique purposes for the filter dropdown
 
 # Entity Diagram(Database Schema)
-```
-   mermaid
+``` mermaid
 erDiagram
     VISITORS {
         int id PK
@@ -58,8 +57,7 @@ erDiagram
 ```
 
 # System Flowchart
-```
-   mermaid
+``` mermaid
 flowchart TD
     A[Visitor Arrives] --> B[Check-In Process]
     B --> C{Input Details}
@@ -73,8 +71,7 @@ flowchart TD
 ```
 
 # API Sequence Diagram
-```
-   mermaid
+``` mermaid
 sequenceDiagram
     participant Frontend
     participant Backend
@@ -97,8 +94,7 @@ sequenceDiagram
 ```
 
 # Class Diagram
-```
-   mermaid
+``` mermaid
 classDiagram
     class Visitor {
         +id: int
