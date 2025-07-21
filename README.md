@@ -77,3 +77,24 @@ Acknowledgments
     Flask Documentation: https://flask.palletsprojects.com/
     Azure Documentation: https://docs.microsoft.com/en-us/azure/
     Bootstrap: https://getbootstrap.com/
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/android01.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/android02.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/android03.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/android04.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/android05.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/android06.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/android07.png)
