@@ -1,17 +1,15 @@
 # Azure-Flask-Web-App
 
-Repository: Online Survey App
+Repository: Leaner Results
 Description
 
-This repository contains the source code for an online survey application built using Python Flask. The app allows users to create, distribute, and analyze surveys easily. It is designed to be scalable and user-friendly, offering a seamless experience for survey creators and respondents alike.
+This repository contains the source code for the leaner results application built using Python Flask. The app allows users to save the results of their learners easily. It is designed to be scalable and user-friendly, offering a seamless experience for educators, learners, students and respondents alike.
 Features
 
-  * User Authentication: Secure user registration and login system.
-  * Survey Creation: Intuitive interface for creating and customizing surveys with various question types.
+  * Results Creation: Intuitive interface for creating and customizing learners results.
   * Response Collection: Collect responses in real-time and ensure data integrity.
-  * Data Analysis: Tools for visualizing survey results and exporting data.
+  * Data Analysis: Tools for visualizing leaner results and exporting data.
   * Responsive Design: Mobile-friendly design to ensure accessibility across devices.
-  * Email Notifications: Automated notifications for survey responses and important updates.
 
 Getting Started
 Prerequisites
