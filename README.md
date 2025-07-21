@@ -98,3 +98,27 @@ Acknowledgments
 
 # Screenshot
 ![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/android07.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/database01.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/databases02.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/dashboard01.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/dashboard02.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/dashboard03.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/dashboard04.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/dashboard05.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/learner_Results/dashboard06.png)
