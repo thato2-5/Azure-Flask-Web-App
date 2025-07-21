@@ -78,3 +78,18 @@ Acknowledgments
     Flask Documentation: https://flask.palletsprojects.com/
     Azure Documentation: https://docs.microsoft.com/en-us/azure/
     Bootstrap: https://getbootstrap.com/
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/feedbackSystem/chatbot.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/feedbackSystem/feedback01.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/feedbackSystem/feedback02.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/feedbackSystem/feedback03.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/feedbackSystem/feedback04.png)
