@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <h1>FHS Ticket System Feedback Chatbot</h1>
+        <div class="chat-box" id="chatBox">
+            <!-- Messages will appear here -->
+            <div class="bot-message">Hello! I'm your feedback assistant. How can I help you today?. Please provide your feedback on the ticket system.</div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Type your ticket system feedback here...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <div class="admin-link">
+        <a href="/dashboard">Dashboard</a>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const message = userInput.value.trim();
+            
+            if (message) {
+                // Add user message to chat
+                addMessage(message, 'user');
+                userInput.value = '';
+                
+                // Send to server
+                fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Add bot response to chat
+                    addMessage(data.response, 'bot');
+                });
+            }
+        }
+        
+        function addMessage(text, sender) {
+            const chatBox = document.getElementById('chatBox');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add(`${sender}-message`);
+            messageDiv.textContent = text;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+        
+        // Allow sending message with Enter key
+        document.getElementById('userInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
+
