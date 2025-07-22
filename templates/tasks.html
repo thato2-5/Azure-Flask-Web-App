@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Tasks</h2>
+    <a href="{{ url_for('add_task') }}" class="btn">Add Task</a>
+    <div class="export-buttons mb-4">
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Export Tasks
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ url_for('export_tasks_csv', **request.args) }}">Export to CSV</a>
+                <a class="dropdown-item" href="{{ url_for('export_tasks_excel', **request.args) }}">Export to Excel</a>
+                <a class="dropdown-item" href="{{ url_for('export_tasks_word', **request.args) }}">Export to Word</a>
+                <a class="dropdown-item" href="{{ url_for('export_tasks_pdf', **request.args) }}">Export to PDF</a>
+            </div>
+        </div>
+        <a href="{{ url_for('add_task') }}" class="btn btn-primary">Add Task</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Project</th>
+                <th>Assignee</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.project.name }}</td>
+                <td>{{ task.assignee.name if task.assignee else 'Unassigned' }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.priority }}</td>
+                <td>{{ task.due_date.strftime('%Y-%m-%d') if task.due_date else '-' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

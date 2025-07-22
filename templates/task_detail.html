@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="task-header">
+        <h2>{{ task.title }}</h2>
+        <span class="badge badge-{{ 'success' if task.status == 'Completed' else 
+                                   'warning' if task.status == 'In Progress' else 
+                                   'info' if task.status == 'In Review' else 
+                                   'secondary' }}">
+            {{ task.status }}
+        </span>
+        <span class="badge badge-{{ 'danger' if task.priority == 'High' or task.priority == 'Critical' else 
+                                   'warning' if task.priority == 'Medium' else 
+                                   'success' }}">
+            {{ task.priority }}
+        </span>
+    </div>
+    
+    <div class="task-details">
+        <p><strong>Project:</strong> <a href="{{ url_for('project_detail', id=task.project.id) }}">{{ task.project.name }}</a></p>
+        <p><strong>Assignee:</strong> {{ task.assignee.username if task.assignee else 'Unassigned' }}</p>
+        <p><strong>Created:</strong> {{ task.created_at.strftime('%Y-%m-%d') }}</p>
+        <p><strong>Due Date:</strong> {{ task.due_date.strftime('%Y-%m-%d') if task.due_date else 'Not set' }}</p>
+        <p><strong>Description:</strong></p>
+        <p>{{ task.description }}</p>
+    </div>
+    
+    <div class="task-actions">
+        <form method="post" action="{{ url_for('update_task_status', id=task.id) }}">
+            <div class="form-group">
+                <label for="status">Update Status:</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="To Do" {% if task.status == 'To Do' %}selected{% endif %}>To Do</option>
+                    <option value="In Progress" {% if task.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                    <option value="In Review" {% if task.status == 'In Review' %}selected{% endif %}>In Review</option>
+                    <option value="Completed" {% if task.status == 'Completed' %}selected{% endif %}>Completed</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+    
+    <div class="task-attachments">
+        <h3>Attachments</h3>
+        <form method="post" enctype="multipart/form-data">
+            {{ attachment_form.hidden_tag() }}
+            <div class="form-group">
+                {{ attachment_form.file(class_="form-control-file") }}
+            </div>
+            {{ attachment_form.submit(class_="btn btn-secondary") }}
+        </form>
+        
+        <div class="attachment-list">
+            {% for attachment in task.attachments %}
+            <div class="attachment-item">
+                <a href="{{ url_for('download_file', filename=attachment.filename) }}" target="_blank">
+                    {{ attachment.filename }}
+                </a>
+                <small>Uploaded by {{ attachment.uploaded_by.username }} on {{ attachment.upload_date.strftime('%Y-%m-%d') }}</small>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="task-comments">
+        <h3>Comments</h3>
+        <form method="post">
+            {{ comment_form.hidden_tag() }}
+            <div class="form-group">
+                {{ comment_form.content(class_="form-control", rows=3) }}
+            </div>
+            {{ comment_form.submit(class_="btn btn-primary") }}
+        </form>
+        
+        <div class="comment-list">
+            {% for comment in task.comments|sort(attribute='timestamp', reverse=True) %}
+            <div class="comment-item">
+                <div class="comment-header">
+                    <strong>{{ comment.author.username }}</strong>
+                    <small>{{ comment.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+                </div>
+                <div class="comment-body">
+                    {{ comment.content }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

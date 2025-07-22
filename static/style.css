@@ -1,0 +1,231 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 1rem 0;
+}
+
+header h1 {
+    text-align: center;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: #e8491d;
+    padding: 0.5rem 0;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0 1rem;
+}
+
+nav a:hover {
+    font-weight: bold;
+}
+
+main {
+    padding: 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #35424a;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: center;
+    width: 30%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.btn {
+    display: inline-block;
+    background: #35424a;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.btn:hover {
+    background: #e8491d;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 100px;
+}
+
+/* Auth forms */
+.auth-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+/* Progress bars */
+.progress {
+    height: 20px;
+    margin: 10px 0;
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    background: #4CAF50;
+    transition: width 0.3s;
+}
+
+/* Badges */
+.badge {
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+
+.badge-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.badge-success {
+    background: #28a745;
+    color: white;
+}
+
+.badge-warning {
+    background: #ffc107;
+    color: black;
+}
+
+.badge-info {
+    background: #17a2b8;
+    color: white;
+}
+
+.badge-danger {
+    background: #dc3545;
+    color: white;
+}
+
+/* Task cards */
+.task-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: white;
+}
+
+.task-card h4 {
+    margin-top: 0;
+}
+
+/* Comments and attachments */
+.comment-item, .attachment-item {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: white;
+}
+
+.comment-header, .attachment-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.comment-body {
+    padding-left: 10px;
+}
+
+/* Charts */
+.chart-container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Search and filter */
+.search-filter {
+    background: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* Responsive tables */
+.table-responsive {
+    overflow-x: auto;
+}
+
