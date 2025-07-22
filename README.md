@@ -79,3 +79,65 @@ Acknowledgments
     Flask Documentation: https://flask.palletsprojects.com/
     Azure Documentation: https://docs.microsoft.com/en-us/azure/
     Bootstrap: https://getbootstrap.com/
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker01.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker02.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker03.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker04.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker05.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker06.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker07.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker08.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker09.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/projectTracker10.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/code.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/restFulAPI.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/restFulAPI01.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/samba.png)
+
+# Screenshot:
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/projectTracker/samba01.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
