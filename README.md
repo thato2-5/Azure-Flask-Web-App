@@ -1,9 +1,9 @@
 # Azure-Flask-Web-App
 
-Repository: Online Survey App
+Repository: User Management App
 Description
 
-This repository contains the source code for an online survey application built using Python Flask. The app allows users to create, distribute, and analyze surveys easily. It is designed to be scalable and user-friendly, offering a seamless experience for survey creators and respondents alike.
+This repository contains the source code for the user management application built using Python Flask. The app allows users to create, distribute, and analyze surveys easily. It is designed to be scalable and user-friendly, offering a seamless experience for survey creators and respondents alike.
 Features
 
   * User Authentication: Secure user registration and login system.
