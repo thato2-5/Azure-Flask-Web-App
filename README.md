@@ -79,3 +79,36 @@ Acknowledgments
     Flask Documentation: https://flask.palletsprojects.com/
     Azure Documentation: https://docs.microsoft.com/en-us/azure/
     Bootstrap: https://getbootstrap.com/
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/allSurveys.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/birthCertificates.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/exhaustInspection.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/plantInspection.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/technicalInstallation.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/activityLogs.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/activityLogs01.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/dashboard.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/dashboard01.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/login.png)
+
+# Screenshot
+![alt text](https://github.com/thato2-5/Azure-Flask-Web-App/blob/userManagement/users.png)
